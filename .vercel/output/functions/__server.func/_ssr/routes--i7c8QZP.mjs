@@ -1,0 +1,1607 @@
+import { i as __toESM } from "../_runtime.mjs";
+import { K as require_react, b as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
+import { a as Library, c as BookOpen, i as Search, l as ArrowRight, o as Check, r as Shuffle, s as Brain, t as X, u as ArrowLeft } from "../_libs/lucide-react.mjs";
+import { n as create, t as persist } from "../_libs/zustand.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/routes--i7c8QZP.js
+var import_react = /* @__PURE__ */ __toESM(require_react());
+var import_jsx_runtime = require_jsx_runtime();
+var models = [
+	{
+		id: "base",
+		no: "00",
+		title: "博弈基础",
+		blurb: "零和、正和，与纳什均衡",
+		group: "开篇"
+	},
+	{
+		id: "prisoner",
+		no: "01",
+		title: "囚徒困境",
+		blurb: "背叛的诱惑、黑森林、旅行者",
+		group: "困境与合作"
+	},
+	{
+		id: "hostage",
+		no: "02",
+		title: "人质困境",
+		blurb: "个强群弱、出头鸟、多边监督",
+		group: "困境与合作"
+	},
+	{
+		id: "repeat",
+		no: "03",
+		title: "重复博弈",
+		blurb: "带剑的契约与一报还一报",
+		group: "困境与合作"
+	},
+	{
+		id: "stag",
+		no: "04",
+		title: "猎鹿博弈",
+		blurb: "帕累托，与强者让步",
+		group: "困境与合作"
+	},
+	{
+		id: "bar",
+		no: "05",
+		title: "酒吧博弈",
+		blurb: "混沌、少数派、第二十二条军规",
+		group: "困境与合作"
+	},
+	{
+		id: "gun",
+		no: "06",
+		title: "枪手博弈",
+		blurb: "置身事外、封面、以弱胜强",
+		group: "对抗与顺序"
+	},
+	{
+		id: "pig",
+		no: "07",
+		title: "智猪博弈",
+		blurb: "搭便车、后发制人、冒险换牌",
+		group: "对抗与顺序"
+	},
+	{
+		id: "cop",
+		no: "08",
+		title: "警察与小偷",
+		blurb: "混合策略、聚点、杀一儆百",
+		group: "对抗与顺序"
+	},
+	{
+		id: "chicken",
+		no: "09",
+		title: "斗鸡博弈",
+		blurb: "边缘策略与烧钱威慑",
+		group: "对抗与顺序"
+	},
+	{
+		id: "concorde",
+		no: "10",
+		title: "协和谬误",
+		blurb: "沉没成本与期望理论",
+		group: "对抗与顺序"
+	},
+	{
+		id: "centipede",
+		no: "11",
+		title: "蜈蚣博弈",
+		blurb: "倒推法，以及它的边界",
+		group: "对抗与顺序"
+	},
+	{
+		id: "cake",
+		no: "12",
+		title: "分蛋糕博弈",
+		blurb: "还价、速决、外部力量",
+		group: "对抗与顺序"
+	},
+	{
+		id: "hawk",
+		no: "13",
+		title: "鹰鸽博弈",
+		blurb: "路径依赖、超速、马太效应",
+		group: "对抗与顺序"
+	},
+	{
+		id: "dirty",
+		no: "14",
+		title: "脏脸博弈",
+		blurb: "共同知识、沉默、交换信封",
+		group: "信息与欺骗"
+	},
+	{
+		id: "lemon",
+		no: "15",
+		title: "信息不对称",
+		blurb: "劣币驱逐良币",
+		group: "信息与欺骗"
+	},
+	{
+		id: "signal",
+		no: "16",
+		title: "信息传递",
+		blurb: "选择悖论与消息怎么说",
+		group: "信息与欺骗"
+	},
+	{
+		id: "screen",
+		no: "17",
+		title: "信息甄别",
+		blurb: "分离均衡、贝叶斯、逆向选择",
+		group: "信息与欺骗"
+	},
+	{
+		id: "deceive",
+		no: "18",
+		title: "策略欺骗",
+		blurb: "引蛇出洞与不战而屈人之兵",
+		group: "信息与欺骗"
+	}
+];
+var groups = [
+	"开篇",
+	"困境与合作",
+	"对抗与顺序",
+	"信息与欺骗"
+];
+var cards = [
+	{
+		id: "base-1",
+		modelId: "base",
+		kicker: "零和 · 负和 · 正和",
+		q: "狐狸掉进井里，狼经过。三种结局分别对应哪一类博弈？",
+		a: "骗狼下井自己得救是零和；一起跳下去是负和；用石头把狐狸拉上来是正和。",
+		detail: "零和：收益总和为 0 或常数，一人所得等于另一人所失。负和：总收益下降，两败俱伤。正和：总收益上升，可以同时有所得。结局里既可以对抗，也可以合作。"
+	},
+	{
+		id: "base-2",
+		modelId: "base",
+		kicker: "纳什均衡",
+		q: "什么情况下，没有人愿意先改变自己的策略？",
+		a: "对方策略已定时，每个人的选择都已是自己的最优，这就是纳什均衡。",
+		detail: "每个人的结果既取决于自己，也取决于别人。坏策略不一定带来坏结果——对方若选了更坏的、利他不利己的策略，你仍可能过得去。考博时一个导师招两人、四人报考，上不上取决于你和别人都考得怎样。"
+	},
+	{
+		id: "base-3",
+		modelId: "base",
+		kicker: "四个要素",
+		q: "一场博弈至少要有哪四个构成要素？",
+		a: "参与者、有限的资源或利益、可选策略、一定量的信息。",
+		detail: "策略选择的过程是：分析局势，找出关键因素，对准最重要的目标，再做选择。模型默认各方理性，但现实中人的理性、知识、推理和精力都有限，所以理论结果往往和真实结果不一致。"
+	},
+	{
+		id: "p-1",
+		modelId: "prisoner",
+		kicker: "背叛的诱惑",
+		q: "隔离审讯里，甲乙是招供还是抵赖？优势策略是什么？",
+		a: "招供是优势策略。无论对方怎么做，招供都不比抵赖差。",
+		detail: "一方招供、一方抵赖：招供者释放，抵赖者十年。都招供各五年。都抵赖则因证据不足释放。均衡建立在不合作上。策略要点：采用优势策略得到的最坏结果，不一定比采用其他策略得到的最佳结果好。"
+	},
+	{
+		id: "p-2",
+		modelId: "prisoner",
+		kicker: "伍子胥",
+		q: "被斥候抓住时，伍子胥怎样迫使对方放人？",
+		a: "抢先宣布：你若押我去见楚王，我就说宝珠被你吞了。",
+		detail: "他利用信息不对称，让斥候和楚王陷入“杀有宝珠的人”的困境。斥候与楚王的博弈处于下风，最优策略是放人。面对劣势时，创造一种双方都无法全身而退的困境，才能迫使对方合作。寡头竞争、军备竞赛都是这一模型。"
+	},
+	{
+		id: "p-3",
+		modelId: "prisoner",
+		kicker: "黑森林法则",
+		q: "《三体》里五艘幸存者战舰，为什么会对同胞先开火？",
+		a: "因为先假定别人一定会攻击，自己不先动手就会被淘汰。",
+		detail: "燃料和食物撑不到六万光年。不攻击、攻击失败都会灭亡，只有攻击成功才有生存机会。舰长们服从的是被选中的纳什均衡，而不是偏好。基本精神是背叛，形成机制是担心自己成为傻瓜。没有十全十美的逃脱办法，只能尽量不受侵害。"
+	},
+	{
+		id: "p-4",
+		modelId: "prisoner",
+		kicker: "旅行者困境",
+		q: "两人各自写花瓶价格，写低的人被当成讲真话并奖两元。理性会写多少？",
+		a: "会一路往下想到最低价。最优其实是都写 100 元。",
+		detail: "航空公司按较低价格赔偿，真话奖两元、假话罚两元。每人都会想“我少写一元就赢奖励”，循环往复，结果越来越坏。个人用背叛追求最大利益，有时带来大家一起倒霉的共同结局。"
+	},
+	{
+		id: "h-1",
+		modelId: "hostage",
+		kicker: "群体理性",
+		q: "老鼠都知道给猫挂铃铛能保命，为什么铃铛挂不上？",
+		a: "谁先行动谁承担送命的风险，个体理性压过群体理性。",
+		detail: "从个体利益出发，往往实现不了团体最大利益，最后也不一定实现个人最大利益。这挑战了“看不见的手”。形成原因是趋利避害。奥曼的相关均衡用客观信息把各自行事的人连起来，例如红绿灯、世贸组织、OPEC。协调不能靠集权扼杀个体理性。"
+	},
+	{
+		id: "h-2",
+		modelId: "hostage",
+		kicker: "个强群弱",
+		q: "旅行车上只有一个女人去交涉迟归的人，为什么最后她反被孤立？",
+		a: "人情和息事宁人让人群沉默，出头的人承担全部冲突。",
+		detail: "面对邪恶却明哲保身的人，最后也会成为受害者。要求任何一个人首先行动并独自承担报复，是不公平的。破局应把代价降到最低：减轻举报者可能遭到的报复，并提高举报的回报。"
+	},
+	{
+		id: "h-3",
+		modelId: "hostage",
+		kicker: "出头鸟",
+		q: "韩信和宋威，两个“出头鸟”分别错在哪里？",
+		a: "韩信功高震主；宋威怕功劳威胁皇帝，反而养贼自保。",
+		detail: "出头鸟站在敌人与领导之间，像踩跷跷板，过度偏移就会危及自己。团队协作里不要威胁领导的利益。若因害怕而与敌人联合，敌人会步步壮大，后悔已晚。"
+	},
+	{
+		id: "h-4",
+		modelId: "hostage",
+		kicker: "竞争中的合作",
+		q: "一战时敌对战壕里，为什么后来可以在步枪射程内散步？",
+		a: "双方都保留报复能力，于是形成不需要友谊的默契。",
+		detail: "一开始不断射击，死伤无法承受；后来你不打我也不打。这种合作的条件是随时能报复。一方失去报复能力，均衡就消失。利害关系永远比道德更有效。商家“全市最低价、否则赔差价”，表面让利，实际是可信的威胁：谁敢降价我就奉陪到底。"
+	},
+	{
+		id: "h-5",
+		modelId: "hostage",
+		kicker: "多边博弈",
+		q: "怎样防止下属或朋友结成攻守联盟？",
+		a: "把双边放进多边监督里，让每个人都可能成为惩罚者。",
+		detail: "西点军校无人监考，作弊即开除，是大力惩罚。朋友圈把关系放进圈子：一旦违背，身边的人马上惩罚。合作往往是多次博弈的结果。1956 年入社自愿、退社自由，合作社有效；1958 年剥夺退社自由后，偷懒的人越来越多。把多次博弈变成单次，往往没有好结果。"
+	},
+	{
+		id: "r-1",
+		modelId: "repeat",
+		kicker: "带剑的契约",
+		q: "为什么不带剑的契约必然无效？",
+		a: "人性趋利避害。没有强制力，守约的一方就会吃亏。",
+		detail: "法律强制执行，改变选择空间和对他人的预期。道德若要起作用，必须基于个人理性，圣人式道德不能要求普通人。最好的策略是让别人相信：合法权利被侵犯时，你会理性评估后一拼到底。宽恕可能让背叛者以为可以逃脱，从而带来更多背叛。"
+	},
+	{
+		id: "r-2",
+		modelId: "repeat",
+		kicker: "四条律",
+		q: "金律、银律、铜律、铁律，哪一条适合普通人？",
+		a: "铜律：别人怎样对待你，你就怎样对待别人。",
+		detail: "金律是己欲立而立人，银律是己所不欲勿施于人，铁律是别人进攻之前先进攻别人。景区“一锤子买卖，不赚白不赚”，社区生意要“吸引回头客”。未来还会见面，就会限制今天的选择。策略好不好，尤其取决于它给双方合作留下多少余地。"
+	},
+	{
+		id: "r-3",
+		modelId: "repeat",
+		kicker: "一报还一报",
+		q: "怎样促使对方合作？金刚怒目和菩萨低眉各是什么？",
+		a: "报复让对方感到恐惧，宽恕让对方感到友好，两者都要有。",
+		detail: "八条：建立持久关系；增强识别对方行动的能力；说报复就做到以维持声誉；能分步的交易不要一次做完；不要嫉妒别人的成功；不要首先背叛；对背叛回报，对合作也回报；不要耍小聪明。朋友来了有好酒，敌人来了有猎枪。"
+	},
+	{
+		id: "r-4",
+		modelId: "repeat",
+		kicker: "再一再二不再三",
+		q: "一报还一报有什么缺陷？升级版怎么操作？",
+		a: "它容易因误会升级仇恨，也缺少宣布“到此为止”的办法。",
+		detail: "先合作。对方背叛后，计算背叛次数占交往的比例：还能忍受就继续合作，不能忍受再报复。然后看对方的回应，决定是否继续合作。宽容有限度，报复也有终点。"
+	},
+	{
+		id: "s-1",
+		modelId: "stag",
+		kicker: "帕累托",
+		q: "两个猎人，合作猎鹿每人得 10，各自打兔子每人得 4。哪个更好？",
+		a: "10/10 对 4/4 具有帕累托优势：改善自己且不损害对方。",
+		detail: "一只鹿够两人吃十天，四只兔子只够一人吃四天。单干打鹿则是 0。帕累托效率指资源已被充分利用，再改善任何人就必须损害别人。否则就还没实现帕累托效率。"
+	},
+	{
+		id: "s-2",
+		modelId: "stag",
+		kicker: "赢家通吃",
+		q: "能力强的猎人若要求分到 15 以上，合作还会继续吗？",
+		a: "一旦甲要求的收益超过 16，乙就不会再选择合作猎鹿。",
+		detail: "即使按贡献看是“公平”的，只要人人都知道总有一方拿走大部分，就没人再相信合作。双方都合作对集体最优；本人不合作、对方合作对自己最优但违背合作；都背叛对集体最坏。爱情里，一方付出的关系是施舍或被剥削。"
+	},
+	{
+		id: "b-1",
+		modelId: "bar",
+		kicker: "酒吧模型",
+		q: "小镇 100 人，酒吧少于 60 人时体验最好。大家不能商量，最后会怎样？",
+		a: "去与不去会自发稳定在大约 60 比 40，但每个人并不固定。",
+		detail: "第一次爆满，下次多数人不去，再下次又挤满。每个人只能根据以往人数归纳。非线性混沌里，无法预测量变到质变的临界点。身处其中，“少数派”策略值得关注。"
+	},
+	{
+		id: "b-2",
+		modelId: "bar",
+		kicker: "控制混沌",
+		q: "秃头、蚂蚁咬树、多米诺，说明混沌该怎么控制？",
+		a: "反馈控制靠试错迭代；非反馈控制靠输入积极信号后让它自己演变。",
+		detail: "一根头发不算什么，一直掉就秃了。蚂蚁不停啃树皮，微风也能吹倒百年老树。怀特海德的骨牌，第 32 张可高达数百米。小变化会越过看不见的临界点。"
+	},
+	{
+		id: "b-3",
+		modelId: "bar",
+		kicker: "第二十二条军规",
+		q: "疯子可以免于飞行，但必须本人申请。为什么这是圈套？",
+		a: "申请本身证明你关心自身安全，也就证明你没有疯。",
+		detail: "破解不是按规则正面对抗，而是改变以自己需求为中心的想法，另辟蹊径：让军官注意到异常行为，把人送到医生那里，由医生出具退伍建议。逻辑困境要用规则之外的路径突破。"
+	},
+	{
+		id: "g-1",
+		modelId: "gun",
+		kicker: "三名枪手",
+		q: "枪法十发八中、六中、四中的三人同时开枪，谁最可能活下来？",
+		a: "最弱的老三。强弱会互为第一目标，老三反而被忽略。",
+		detail: "若轮流开枪且老三先开，最佳策略不是打人，而是对天放空枪，让另外两人先决出胜负。鲁尼恩定律：赛跑不一定快的赢，打架不一定弱的输。实力对结果的影响，有时远不如策略。"
+	},
+	{
+		id: "g-2",
+		modelId: "gun",
+		kicker: "置身事外",
+		q: "张之洞说江面七里三分，谭继洵说五里三分。知县怎么裁决？",
+		a: "涨水七里三分，落水五里三分，两位大人都没说错。",
+		detail: "置身事外是为了在冲突最初阶段保护自己，将来入局时更游刃有余。两个朋友为小事争执，你当面说一方不是：一方自尊心受挫，另一方一时感激，事后也会觉得你让他失去了和好的机会。"
+	},
+	{
+		id: "g-3",
+		modelId: "gun",
+		kicker: "封面博弈",
+		q: "两本杂志同时选封面：国足或父亲节。谁有优势策略？",
+		a: "A 的优势策略是国足。B 应假定 A 会这么做，改选父亲节。",
+		detail: "100 个读者里 70 人关心国足、30 人关心父亲节；封面相同时 60% 买 A。有优势策略就照办，不必担心对手。自己没有、对手有，就当他一定会采用，再选自己最好的做法。若是相继出招，就要预计下一步反应：局部降价把威胁变成现实，迫使对方跟进后再回到目标价格。"
+	},
+	{
+		id: "g-4",
+		modelId: "gun",
+		kicker: "以弱胜强",
+		q: "红军两师攻城，蓝军三师防守。兵力劣势还能打平胜率吗？",
+		a: "能。剔除双方劣势策略后，攻其不备的胜率与守方相同。",
+		detail: "人数多者胜，人数相等守方胜。蓝军“全守一边”是劣势策略，理性下不会选。简化后红军分散进攻也变成劣势。剩下集中攻 A 或集中攻 B，对上蓝军的两种搭配，红蓝形势相同。谋略可以抵消兵力差。"
+	},
+	{
+		id: "z-1",
+		modelId: "pig",
+		kicker: "搭便车",
+		q: "猪圈里踩一下踏板出 10 份饲料，还要消耗 2 份。小猪该怎么做？",
+		a: "等待是小猪的严格优势策略。大猪只好自己去踩。",
+		detail: "小猪先到，大猪 6、小猪 4；大猪先到，9 与 1；同时到，7 与 3。扣掉劳动后，小猪踩踏板的收益都不如等待。占有更多资源的一方往往承担更多义务。每个人的利益无法同时满足，绝对公正是伪问题。"
+	},
+	{
+		id: "z-2",
+		modelId: "pig",
+		kicker: "激励规则",
+		q: "管理里怎样杜绝“小猪躺着大猪跑”？",
+		a: "减量并把投食口移到踏板边：等待者不得食，多劳者多得。",
+		detail: "减量一半，谁踩都是给对方做贡献，结果都不踩。增量一倍，谁想吃谁踩，但竞争意识弱、成本高。奖励见者有份，努力的大猪也没动力。奖励要针对个人，比如按比例提成，并提高小猪的投机成本。"
+	},
+	{
+		id: "z-3",
+		modelId: "pig",
+		kicker: "后发制人",
+		q: "轮盘最后一轮，女子已经把 300 元押在 3 的倍数上。巴里怎么办？",
+		a: "跟随她，押同一个注，从而锁定不比她差的结果。",
+		detail: "《孙子》说善战者致人而不致于人。先下手若不能变成最终胜利的一部分，就会陷入被动。这个例子里先行者不利：后手可以选择一个确保不输的策略。若巴里先下注，女子也能选到同样的机会。"
+	},
+	{
+		id: "z-4",
+		modelId: "pig",
+		kicker: "冒险换牌",
+		q: "三扇门选了 1 号，主持人打开有羊的 3 号。该不该换成 2 号？",
+		a: "该换。2 号有车的概率变成 2/3，原来那扇仍是 1/3。",
+		detail: "主持人知道车在哪，绝不会打开有车的门。你一开始选中的概率是 1/3，另外两扇合计 2/3；他删掉其中一只羊，2/3 就集中到剩下那扇。不利时，冒更大风险换牌是优势策略；已经处于有利地位时，保守跟随才明智。"
+	},
+	{
+		id: "c-1",
+		modelId: "cop",
+		kicker: "混合策略",
+		q: "一名警察，银行值两万、酒馆值一万。他该固定守银行吗？",
+		a: "不该。警察 2/3 去银行、1/3 去酒馆；小偷正好相反。",
+		detail: "固定守银行，小偷就一定去酒馆。这里没有纯策略均衡。纯策略是一次性选定并坚持；混合策略是按概率随机抽取，而且可以调整概率。不能让对方知道你的倾向，否则输的可能就变大。"
+	},
+	{
+		id: "c-2",
+		modelId: "cop",
+		kicker: "约会博弈",
+		q: "电话断了，只说十分钟后在校园见。图书馆、餐厅、自习室、小树林，去哪？",
+		a: "去那个因共同知识而格外显眼的聚点，而不是随机挑。",
+		detail: "四个地点都是纳什均衡，只有去同一处才成功。谢林把更可能发生的均衡称为聚点：定情纪念日就去小树林，快到午饭就去餐厅。文化、规范、传统帮助形成聚点。警察与小偷靠随机，约会靠共有信息。"
+	},
+	{
+		id: "c-3",
+		modelId: "cop",
+		kicker: "杀一儆百",
+		q: "按百家姓顺序惩罚不登记的人，为什么激励不了所有人？",
+		a: "排在后面的人不受影响。必须随机抽查，并提高单次罚金。",
+		detail: "惩罚一千人，可以震慑数百万人，不必罚到和人群一样多。交警有限时，二十次违停只抓一次，只要罚款够高，司机仍会去停车场。只随机还不够，还要知道随机的比例，并动态调整。"
+	},
+	{
+		id: "k-1",
+		modelId: "chicken",
+		kicker: "胆小鬼",
+		q: "两只实力相当的斗鸡，都前进会怎样？怎样避免两败俱伤？",
+		a: "都前进就两败俱伤。把攻击仪式化，或用可信的威胁换回旋余地。",
+		detail: "古巴导弹危机就是双方互相试探、差点核战。动物的觅食、性、逃跑、攻击，对应人的食物、性与心理满足。公牛用角铲地而不追死对方。斗鸡里往往只有一方能赢，比的是胆量：软的怕硬的，硬的怕愣的，愣的怕冲的，冲的怕不要命的。看似疯狂的举动，常常出自精算的战略家，因为破釜沉舟更容易让人相信。"
+	},
+	{
+		id: "k-2",
+		modelId: "chicken",
+		kicker: "边缘策略",
+		q: "普特南打不过英国少将，为什么邀请对方一起坐上火药桶？",
+		a: "他创造并控制灾难风险，迫使对方先认输。桶里其实是洋葱。",
+		detail: "边缘策略要先形成不确定的威胁，并在一定程度上交出对全局的自由，让灾难对双方的损伤足以改变对手的行动。赢的关键不是真的视死如归，而是对赌局的判断和所选的策略。"
+	},
+	{
+		id: "k-3",
+		modelId: "chicken",
+		kicker: "浪费吓退对手",
+		q: "温泉关故事里，为什么“乐意牺牲手下”比“为我的手下牺牲自己”更吓人？",
+		a: "前者是更残忍的烧钱：烧掉的是别人的命，威胁更可信。",
+		detail: "竞标黄金时段、巨额捐款，是现代的烧钱策略。跟老板谈加薪像斗鸡：提出的数要超出你觉得该得的，即便得不到，也迫使老板重新评估你的价值。关键是敢于把两个不一致的估值暴露出来。"
+	},
+	{
+		id: "o-1",
+		modelId: "concorde",
+		kicker: "沉没成本",
+		q: "电影看了十分钟觉得无聊。为什么花钱买票的人更愿意看完？",
+		a: "票价已经收不回，人们却把它算进“不能白花”的决策里。",
+		detail: "问卷里，免费时多数人放弃，花了 20 元多数人看完。协和飞机超预算近六倍、只需卖出远超实际订单才不亏，仍停不下来。沉没成本是已发生、无法回收的金钱、时间、精力。炒股被套，往往始于最初的不甘心。"
+	},
+	{
+		id: "o-2",
+		modelId: "concorde",
+		kicker: "期望理论",
+		q: "为什么人面对损失时更愿意冒险，面对盈利时却想落袋为安？",
+		a: "损失的价值函数比盈利更陡。人厌恶损失，所以舍不得止损。",
+		detail: "卡尼曼与特沃斯基：先找参照点，再受确定性效应影响，最后用 S 形价值函数估价。人们常把参照点放在投入之前，于是已花的钱被算成损失。一百元盈利的压力，远小于一百元损失的压力。"
+	},
+	{
+		id: "o-3",
+		modelId: "concorde",
+		kicker: "认赔服输",
+		q: "八元买的股票跌到六元，该不该抛？用哪两个问题来判断？",
+		a: "假如手里没有，我还会买吗？假如早已盈利，我还会留吗？",
+		detail: "两个答案都肯定，即使已亏两元也不必出手；都否定，就说明你并不看好，最好抛掉。购买和抛售是一体两面。摆脱沉没成本靠评估、止损和安慰。生活里最大的效率，是有勇气改变能改变的，有度量接受不能改变的，并有智慧分辨两者。预付且不退的健身费，则是主动增加沉没成本来强迫自己坚持。"
+	},
+	{
+		id: "e-1",
+		modelId: "centipede",
+		kicker: "海盗分金",
+		q: "五个理性海盗分 100 枚金币，1 号先提方案，过半数才通过。1 号该怎么分？",
+		a: "放弃 2 号，拉拢 3 号，再拉拢 4 或 5 其中一人，自己拿 98。",
+		detail: "从只剩 5 号倒推：4 号必须支持 3 号才能保命；3 号只需再拉 4 号；2 号会放弃 3 号去拉 4 和 5。一人一步的相继博弈，必须向前展望、估计对手意图，再倒后推理决定这一步。"
+	},
+	{
+		id: "e-2",
+		modelId: "centipede",
+		kicker: "倒推悖论",
+		q: "爱情若按蜈蚣博弈倒推，第一步就该分手。为什么现实不是这样？",
+		a: "倒推法逻辑严密，但只在一定条件和范围内有效。",
+		detail: "继续交往让总效用上升，但每一步都担心对方下一次先甩了自己。严格倒推会在第一步结束。莫滕森发现，即使人们知道将来可能分手，仍会结成可接受的匹配。模型只是近似，不能用来否定所有完全信息的动态博弈，符合条件时它仍然有效。"
+	},
+	{
+		id: "e-3",
+		modelId: "centipede",
+		kicker: "以终为始",
+		q: "李恕权被问“五年后最希望干什么”，他怎样用倒推安排生活？",
+		a: "从五年后的唱片和工作地点往回排，直到今年、这个月、这一周。",
+		detail: "五年后要有受欢迎的唱片，并和一流乐师一起工作，于是第四年该有自己的工作室，第三年进入圈子，第二年就该住在纽约或洛杉矶。伍迪·艾伦说生活百分之九十的时间只是在混。先写下本年度四到十个目标，找出一个核心，再排详细计划。"
+	},
+	{
+		id: "a-1",
+		modelId: "cake",
+		kicker: "轮流分蛋糕",
+		q: "蛋糕每拖一轮就融掉一块。奇数轮和偶数轮，分配有何不同？",
+		a: "偶数轮各一半；奇数轮先行者略多，101 轮时约是 51 对 50。",
+		detail: "博弈不能无限次。向前展望、倒后推理，会引出中途谈判、大致平分。先行者的优势会随着轮次增加而变薄，但奇数轮仍让先提条件的人多得一点点。等待本身有成本。"
+	},
+	{
+		id: "a-2",
+		modelId: "cake",
+		kicker: "博尔韦尔策略",
+		q: "玉器商人为什么宁可摔碎顾客喜欢的物件，也不肯从八百两降到六百两？",
+		a: "提出合理价格后拒绝再还价，也就是“不买拉倒”。",
+		detail: "策略要有效：树立不好惹的名声；不让对手察觉你成交意愿有多强；不让对手估出你失败的损失；让威胁可信。把自己锁定在有利地位的三个诀窍是不可逆的约束、威胁和承诺。要耐心，别暴露重要细节，让别人以为你不会出手。"
+	},
+	{
+		id: "a-3",
+		modelId: "cake",
+		kicker: "兵贵胜不贵久",
+		q: "巴尔扎克看中花瓶，为什么让朋友们进店把出价越叫越低？",
+		a: "拉低店主的期望。东西在手里越久，店主感觉成本越高。",
+		detail: "利益分配里，等待成本低的一方占优。每日成本一百能撑两百天，就比每日两百只能撑一百天的人有相对优势。《孙子》说日费千金，兵久而国利者未之有，故兵贵胜、不贵久。因粮于敌，是提高自己撑下去的能力。人们对现在的支出看得比未来的收益更重，这就是贴现。"
+	},
+	{
+		id: "a-4",
+		modelId: "cake",
+		kicker: "外部算计",
+		q: "老师傅把花架钉在十七楼窗外，小李怎样让他愿意返工？",
+		a: "请他写下二十年保证并签名。不敢写，就等于承认不结实。",
+		detail: "买家争取先验货或试用再付款，卖家争取对方先付一部分再交货。霍格斯威胁把不满意的肖像卖给畸形展，贵族在丢脸和付钱之间选了付钱。甘露寺招亲则是把家事变成舆论，增加孙权的决策难度。两权相害取其轻。"
+	},
+	{
+		id: "a-5",
+		modelId: "cake",
+		kicker: "偷梁换柱",
+		q: "工会最要总裁公开道歉，公司最要工资福利让步。查特怎么换？",
+		a: "用对方最在意的面子，换回自己最在意的实质利益。",
+		detail: "同一件事，不同人的重视程度不同。可以抓对方最关注的一点，换自己最关心的一项或多项；把多个议题混在一起，一个议题还能变成另一个议题的威胁，对方也更容易忽略其余问题。《三十六计》的偷梁换柱，就是暗中换掉对方所追求利益的关键部分。"
+	},
+	{
+		id: "w-1",
+		modelId: "hawk",
+		kicker: "进化稳定策略",
+		q: "什么叫 ESS？银行若只够兑付八成存款，理性的存户该怎么办？",
+		a: "ESS 是一旦流行、异常策略就比不过的惯例。挤兑时仍应去排队。",
+		detail: "大家都这么做时，遵循惯例最省事、风险最小；不遵循会受惩罚。群体危机会自我实现。门口的长队传递受欢迎的信息，但也可能被餐厅用假订位制造。预警出现时，不要以为自己比别人更高尚就可以不随大溜。"
+	},
+	{
+		id: "w-2",
+		modelId: "hawk",
+		kicker: "路径依赖",
+		q: "为什么更好的键盘出现后，大家仍在用为了减慢打字而设计的 QWERTY？",
+		a: "最初的选择会自我加强，后来即使更差也难以退出。",
+		detail: "编栅栏时第一根桩用了弯木，后面就得一路用弯木。铁轨宽度可以追溯到马车轮距。1868 年的顺序键盘打快了会卡字棒，于是把常用字母拆开。电子打印机出现后，人们不愿重学，厂商只好沿用。惯例一旦形成，就像走上不归路。"
+	},
+	{
+		id: "w-3",
+		modelId: "hawk",
+		kicker: "超速博弈",
+		q: "限速之下，到底该不该超速？答案取决于什么？",
+		a: "取决于别人。人人超速时跟速更安全；人人守规时超速又险又容易被抓。",
+		detail: "有一个老司机超速，就会稍稍提高别人超速的安全性，于是可能有人跟随。没人超速时，谁也不想做第一个；人人超速时，谁也不想成为唯一落后的人。立法者要争取临界数目的司机守规，办法是一段短期、极其严格的执法，把足够多人的习惯扭过来。"
+	},
+	{
+		id: "w-4",
+		modelId: "hawk",
+		kicker: "马太效应",
+		q: "路径依赖对个人成功的直接启示是什么？",
+		a: "早日发现并发挥潜力。起点的微小优势会被放大成更大的累积。",
+		detail: "马太效应出自《马太福音》：已经优势的人获得更多优势，已经劣势的人更加劣势。《道德经》说天之道损有余而补不足，人之道则损不足以奉有余。百米赛跑里，发令枪响时快几毫秒，就可能是冠军。成功要趁早。"
+	},
+	{
+		id: "d-1",
+		modelId: "dirty",
+		kicker: "共同知识",
+		q: "三个人脸都脏，但只能看见别人。为什么宣布“至少一人脸脏”之后，第二眼他们突然脸红？",
+		a: "宣布没有增加新事实，只是把人人已知的事变成了共同知识。",
+		detail: "第一眼，每个人都看见至少两张脏脸，以为不是自己。第二眼，如果只有两张脏脸，对面的人看见你的干净脸就该脸红；他们没有，于是推出自己也脏。共同知识是：我知道，你知道，我知道你知道，并且这层层知道对整个群体成立。静态博弈里不能只观察策略，必须看穿对手的推理。"
+	},
+	{
+		id: "d-2",
+		modelId: "dirty",
+		kicker: "黑白帽子",
+		q: "三人同向而立，1 号看见两顶帽子，2 号看见一顶，3 号什么都看不见。为什么 3 号知道自己是黑帽？",
+		a: "1 号不知道，说明不是两顶白帽；2 号仍不知道，说明 3 号不是白帽。",
+		detail: "帽子共三黑两白。1 号若看见两顶白，就能确定自己是黑，但他不知道。2 号由此知道自己和 3 号不是“自己黑、3 号白”，否则自己能推出来。2 号也不知道，3 号就推出自己一定是黑。每个人都要同时扮演自己和对手。静下心来，都可以做一次福尔摩斯。"
+	},
+	{
+		id: "d-3",
+		modelId: "dirty",
+		kicker: "沉默的被告",
+		q: "律师说受害人马上会从门口走进来，陪审团都看向门口。为什么被告仍然有罪？",
+		a: "陪审团都看了，委托人却没有看。沉默本身说明他知道没人会进来。",
+		detail: "聪明的人能从无声处听出真相。生活里要听于无声、视于无形：对方闭上眼睛不作声时，不必再追问一句把信息问破。在更多信息出现之前，先假定沉默代表对方的不利处境。买东西、了解伴侣、看履历，都适用。"
+	},
+	{
+		id: "d-4",
+		modelId: "dirty",
+		kicker: "交换信封",
+		q: "两个信封一个是另一个的两倍。只看自己手里的金额，为什么人人都想换，换了却必有人吃亏？",
+		a: "是否愿意交换本身就是信息。考虑对方的意愿后，几乎都不该换。",
+		detail: "金额只在 5 到 160 之间，且成倍数。只算自己，期望似乎总是更高。但双方不可能同时改善。若对方理性：拿到 160 不肯换；他肯换就说明可能是较小的那个，于是你也不肯换。依此类推，唯一愿意换的是拿到 5 元的人，而那时对方一定不肯。"
+	},
+	{
+		id: "l-1",
+		modelId: "lemon",
+		kicker: "劣币驱逐良币",
+		q: "三家药店，专卖好药的萧条，专卖差药的致富。博弈上是为什么？",
+		a: "卖坏药成了优势策略，买家又看不出质量，逆向选择把好药逐出市场。",
+		detail: "药商既有保证质量的道德压力，又要尽最大可能获利。一旦有人以降质换低价，坚持原则的人就没有顾客。私有信息是一方知道、对方不知道的信息。买卖双方都在信息迷雾里决策。"
+	},
+	{
+		id: "l-2",
+		modelId: "lemon",
+		kicker: "如何减轻",
+		q: "信息不对称改不掉“少数人知道、多数人不知道”。还能做什么？",
+		a: "把不确定性变成相对确定：传递信息、甄别信息，并用重复博弈约束。",
+		detail: "影响最大的往往是婚姻，其次职业和商业：买的没有卖的精，能力强的人不一定待遇更好。风险就是事后才看见的决策损失。征兵广告把最坏情况一路拆开，是让人先接受最坏，才有利于应对它。"
+	},
+	{
+		id: "n-1",
+		modelId: "signal",
+		kicker: "信息的价值",
+		q: "持枪的窃贼遇见持枪下楼的房主。什么信息能避免互射？",
+		a: "双方都表明：一个只想赶走人，一个只想图财、无意害命。",
+		detail: "信息越全，决策越准，收益越大。先开枪常常是因为担心对方会先开枪。谁多掌握一点，事态就偏向谁。法律里的证据交换，就是让双方看清强弱，从而更容易和解，而不是打到最后。"
+	},
+	{
+		id: "n-2",
+		modelId: "signal",
+		kicker: "选择的悖论",
+		q: "6 种果酱和 24 种果酱，哪一个摊位卖得更多？为什么？",
+		a: "6 种。停下试吃的人更多，不等于付款的人更多；选择太多，人反而下不了手。",
+		detail: "24 种有六成人停下，却只有约 3% 付款；6 种停下的人较少，至少三成会买。店员问“一瓶还是两瓶”，是在划定框架。人的判断主要基于眼前清晰的信息，通常忽略机会成本；被提醒后购买意愿下降，并更买便宜的。重大选择宜简洁，一般两到五个。"
+	},
+	{
+		id: "n-3",
+		modelId: "signal",
+		kicker: "误解与损耗",
+		q: "“该来的又不来”“不该走的又走了”，为什么客人一个个走光？",
+		a: "同一句话被按自己的利害重新解读。重音一变，意思就反了。",
+		detail: "“我没说她偷了我的钱”，重音放在不同的字上，可以是暗示、否认或指控。损耗来自语气、表情、音调，也来自接收者有意按利益筛选，或无意地听不懂陌生表达。判断一条信息：是事实吗，符合逻辑吗，有效应吗，你是合适的人选吗，能得出明确结论吗。"
+	},
+	{
+		id: "n-4",
+		modelId: "signal",
+		kicker: "信号",
+		q: "为什么学历和央视黄金时段广告，能减轻逆向选择？",
+		a: "它们成本高，低能力或没实力的人很难模仿，于是把类型分开。",
+		detail: "受教育的成本与能力相关，学历才有分离功能。砸黄金时段不只为覆盖，也为显示实力。封面不好的书，人很难相信内容精益求精。你交往的人也会被当成你的信号：与失败者走得太近拉低评分，与成功者走近则抬高评分。外在行为十分肤浅，但别人判断起来又容易又快。"
+	},
+	{
+		id: "n-5",
+		modelId: "signal",
+		kicker: "好坏消息",
+		q: "几个坏消息、几个好消息、一大好一小坏、一大坏一小好，分别该怎么宣布？",
+		a: "坏的一起说，好的分开说；大好配小坏一起，大坏与小好分开。",
+		detail: "几个坏消息合在一起，边际效用递减，总痛苦更小，人也希望快刀斩乱麻。好消息分开，就等于经历两次快乐。小小的坏会被大大的好冲淡；小小的好若和巨大的坏绑在一起，快乐会被淹没。"
+	},
+	{
+		id: "sc-1",
+		modelId: "screen",
+		kicker: "分离与混同",
+		q: "保险若只提供一种保费，低风险的人为什么会退出？",
+		a: "这是混同均衡：保费被高风险拉高，低风险觉得不值。分离均衡则提供不同菜单。",
+		detail: "市场要的是利益均衡。混同是一个所有人都接受的选择；分离是向不同的人提供不同选择，让他们不隐瞒类型。斯蒂格利茨用它回答逆向选择和道德风险。商务舱与经济舱、演唱会分区票，都是在筛选支付意愿。"
+	},
+	{
+		id: "sc-2",
+		modelId: "screen",
+		kicker: "机制设计",
+		q: "所罗门为什么说要把孩子劈成两半？这和卖保险有什么相同？",
+		a: "设计一套规则，让不同类型的人做出不同选择，再从选择反推真实类型。",
+		detail: "真母亲求别杀孩子，另一人说劈开吧。观察选择，就知道谁是谁。新兵培训里，亨特不先讲抚恤金额，而问：开战时政府会先派买了保险的还是没买的上战场。有效甄别的关键，是从一系列外在表现看穿对方将要采取的策略。"
+	},
+	{
+		id: "sc-3",
+		modelId: "screen",
+		kicker: "贝叶斯",
+		q: "《黔之驴》里老虎怎样决定最后扑上去？恋爱里为什么放弃第二套房是一个筛选？",
+		a: "用新证据不断更新先验。昂贵且难以伪装的行动，才传递真实类型。",
+		detail: "老虎先以为驴本领不大，听见叫声又高估，再发现只会踢，于是吃掉它。贝叶斯方法就是用新数据把先验改成后验。经济学家说保留廉租房“有选择总是好的”，女友立刻分手：语言很便宜，放弃公寓才是忠诚的有力证明。长期里一个人做好事还是做坏事，很大程度上取决于别人认为他是好人还是坏人。"
+	},
+	{
+		id: "sc-4",
+		modelId: "screen",
+		kicker: "逆向思维",
+		q: "年薪二十四万招程序员，十个人来应聘。公司最该盯住谁？你最该去哪家公司？",
+		a: "别只盯最渴望这份工作的人。你最该去的，是最不想要你的那家。",
+		detail: "最渴望的人，往往是别处拿不到这个数的人。漫不经心、甚至勉强才来的应试者，可能能力更高、选择更多。你轻松通过面试，也许说明你高于现有员工，成长空间有限；你很努力仍得分不高却因别的原因被录用，可能意味着那里的人比你强，你能成长。"
+	},
+	{
+		id: "v-1",
+		modelId: "deceive",
+		kicker: "引蛇出洞",
+		q: "张飞酒后丢过徐州。智取瓦口隘时，他为什么又天天在阵前喝醉骂人？",
+		a: "真弱点会害自己；故意露出弱点，是为了让张郃按规律攻进来。",
+		detail: "理想博弈假定人完全理性，几乎无规律可用。现实博弈规律很多：来自固有偏好，也来自训练。智力高，规律复杂且短；智力低，规律简单且持久。善用自己的弱点，就是把对方对你的预期变成陷阱。"
+	},
+	{
+		id: "v-2",
+		modelId: "deceive",
+		kicker: "将计就计",
+		q: "五岁女孩在商场走失，为什么让广播自己的名字，而不是爸爸的名字？",
+		a: "怕坏人听到后冒充家长。要保密的是自己的信息、处境和决策倾向。",
+		detail: "《周易》说君不密则失臣，臣不密则失身，几事不密则害成。孙权送关羽首级想嫁祸曹操，曹操配上沉香木躯体、以王礼安葬，把计策原样送回，刘备仍去找孙权拼命。理想人以为对方也像自己一样算计；聪明人还相信环境有变数，有时表现得近乎荒谬。"
+	},
+	{
+		id: "v-3",
+		modelId: "deceive",
+		kicker: "威慑",
+		q: "不战而屈人之兵，威慑有哪四种方式？威胁应该开多大？",
+		a: "秀肌肉、破釜沉舟、装疯卖傻、保护自己的武器。取能奏效的最小且恰当的一种。",
+		detail: "强迫性威胁、阻吓性威胁、强迫性承诺、阻吓性承诺，都是回应规则。惩罚必须与“罪行”相称，过大就失去可信度。《孙子》说上兵伐谋，其次伐交，其次伐兵，其下攻城。会谈前先发制人，常常是为了增加筹码。只有清晰展示实力，才可能威慑对方。"
+	},
+	{
+		id: "v-4",
+		modelId: "deceive",
+		kicker: "破釜沉舟",
+		q: "项羽凿沉船只，看起来束缚了自己。得到的是什么？",
+		a: "改变了对手对“你下一步会不会退”的预期，于是对方选择撤退。",
+		detail: "策略要在对方行动之前，让他观察或推断得到。巨鹿之战能成，是因为将士知道并支持这个命令。作战室里达成一致还不够，自己和对手都要透彻了解。基辛格谈威慑的三要素：实力、决心、让对手知道。"
+	},
+	{
+		id: "v-5",
+		modelId: "deceive",
+		kicker: "装疯卖傻",
+		q: "商店 A 公开买蛋就送，商店 B 假装数不清、偷偷多送。为什么 B 赢了？",
+		a: "公开赠送变成应得的，还会让人怀疑质量。装傻让赠送保持弹性。",
+		detail: "装疯卖傻能提高威胁的可信度。关键不在于你是否理性，而在于对手认为你是否理性，也就是信不信你会下决心报复。让威胁兑现对你不一定有利，别人想到这一点就不会把威胁当回事。最好让人相信你有一点不理性：即使损害自己，也会兑现。"
+	},
+	{
+		id: "v-6",
+		modelId: "deceive",
+		kicker: "保护武器",
+		q: "分手后对方以自伤要挟。为什么打电话给家长、报警，比安抚更有效？",
+		a: "只有对方还在乎长期收益，威慑才可信。要保护的是还手能力，不是眼前收益。",
+		detail: "山穷水尽、不再在乎以后的人，会为短期收益撕破脸。每一方在遭受第一次袭击后仍有还手能力，且这一次打击足以让先进攻者得不偿失，冲突才不会发生。与对手博弈、与搭档博弈都适用：拥有武器不是为了先发制人，而是为了打击之后还能还击。"
+	}
+];
+function modelById(id) {
+	const found = models.find((m) => m.id === id);
+	if (!found) throw new Error(`unknown model ${id}`);
+	return found;
+}
+function cardsIn(modelId) {
+	return cards.filter((c) => c.modelId === modelId);
+}
+function choicesFor(card) {
+	const others = cards.filter((c) => c.id !== card.id).map((c) => c.a);
+	let h = 2166136261;
+	for (const ch of card.id) h = Math.imul(h ^ ch.charCodeAt(0), 16777619);
+	const picked = [];
+	const used = /* @__PURE__ */ new Set([card.a]);
+	let guard = 0;
+	let i = h % others.length;
+	while (picked.length < 3 && guard < others.length * 2) {
+		const text = others[i % others.length];
+		if (!used.has(text)) {
+			used.add(text);
+			picked.push(text);
+		}
+		i += 1;
+		guard += 1;
+	}
+	const all = [card.a, ...picked];
+	for (let n = all.length - 1; n > 0; n -= 1) {
+		h = Math.imul(h, 1664525) + 1013904223 >>> 0;
+		const j = h % (n + 1);
+		const swap = all[n];
+		all[n] = all[j];
+		all[j] = swap;
+	}
+	return all;
+}
+function empty() {
+	return {
+		box: 0,
+		reviews: 0,
+		lapses: 0
+	};
+}
+function nextBox(box, g) {
+	if (g === "again") return 0;
+	if (g === "hard") return 1;
+	return Math.min(3, Math.max(2, box + 1));
+}
+var boxLabel = [
+	"未学",
+	"含糊",
+	"熟悉",
+	"掌握"
+];
+var useProgress = create()(persist((set) => ({
+	stats: {},
+	grade: (id, g) => set((state) => {
+		const prev = state.stats[id] ?? empty();
+		const box = nextBox(prev.box, g);
+		return { stats: {
+			...state.stats,
+			[id]: {
+				box,
+				reviews: prev.reviews + 1,
+				lapses: prev.lapses + (g === "again" ? 1 : 0)
+			}
+		} };
+	}),
+	reset: () => set({ stats: {} })
+}), {
+	name: "boyi-flash",
+	skipHydration: true
+}));
+function shuffle(list) {
+	const all = [...list];
+	for (let n = all.length - 1; n > 0; n -= 1) {
+		const j = Math.floor(Math.random() * (n + 1));
+		const swap = all[n];
+		all[n] = all[j];
+		all[j] = swap;
+	}
+	return all;
+}
+function useHydratedProgress() {
+	const stats = useProgress((s) => s.stats);
+	const grade = useProgress((s) => s.grade);
+	const reset = useProgress((s) => s.reset);
+	const [ready, setReady] = (0, import_react.useState)(false);
+	(0, import_react.useEffect)(() => {
+		Promise.resolve(useProgress.persist.rehydrate()).finally(() => setReady(true));
+	}, []);
+	return {
+		stats: ready ? stats : {},
+		grade,
+		reset,
+		ready
+	};
+}
+function Studio() {
+	const { stats, grade, reset, ready } = useHydratedProgress();
+	const [view, setView] = (0, import_react.useState)("map");
+	const [query, setQuery] = (0, import_react.useState)("");
+	const [queue, setQueue] = (0, import_react.useState)([]);
+	const [index, setIndex] = (0, import_react.useState)(0);
+	const [flipped, setFlipped] = (0, import_react.useState)(false);
+	const [phase, setPhase] = (0, import_react.useState)("run");
+	const [session, setSession] = (0, import_react.useState)({});
+	const [deckTitle, setDeckTitle] = (0, import_react.useState)("全部卡片");
+	const [quiz, setQuiz] = (0, import_react.useState)(null);
+	const [armReset, setArmReset] = (0, import_react.useState)(false);
+	const mastered = cards.filter((c) => (stats[c.id]?.box ?? 0) >= 3).length;
+	const familiar = cards.filter((c) => (stats[c.id]?.box ?? 0) >= 2).length;
+	function openDeck(ids, title) {
+		const unique = ids.filter((id, i) => ids.indexOf(id) === i);
+		setQueue(shuffle(unique));
+		setIndex(0);
+		setFlipped(false);
+		setPhase(unique.length ? "run" : "done");
+		setSession({});
+		setDeckTitle(title);
+		setView("study");
+	}
+	function openDue() {
+		const due = cards.filter((c) => (stats[c.id]?.box ?? 0) < 2).map((c) => c.id);
+		openDeck(due.length ? due : cards.map((c) => c.id), due.length ? "今日待复习" : "全部再过一遍");
+	}
+	function openLapses() {
+		openDeck(cards.filter((c) => (stats[c.id]?.lapses ?? 0) > 0 && (stats[c.id]?.box ?? 0) < 3).map((c) => c.id), "还没掌握的卡");
+	}
+	function startQuiz(pool, title) {
+		const picked = shuffle(pool).slice(0, Math.min(10, pool.length));
+		setQuiz({
+			title,
+			items: picked.map((card) => ({
+				card,
+				choices: choicesFor(card),
+				picked: null
+			})),
+			cursor: 0,
+			done: false
+		});
+		setView("quiz");
+	}
+	const current = queue[index] ? cards.find((c) => c.id === queue[index]) : void 0;
+	function give(g) {
+		if (!current) return;
+		grade(current.id, g);
+		setSession((prev) => ({
+			...prev,
+			[current.id]: g
+		}));
+		if (index + 1 >= queue.length) {
+			setPhase("done");
+			setFlipped(false);
+			return;
+		}
+		setIndex((n) => n + 1);
+		setFlipped(false);
+	}
+	(0, import_react.useEffect)(() => {
+		function onKey(event) {
+			const target = event.target;
+			if (target && (target.tagName === "INPUT" || target.tagName === "TEXTAREA")) return;
+			if (view !== "study" || phase !== "run" || !current) return;
+			if (event.key === " " || event.key === "Enter") {
+				event.preventDefault();
+				setFlipped((value) => !value);
+			} else if (event.key === "ArrowRight") {
+				event.preventDefault();
+				setIndex((n) => Math.min(queue.length - 1, n + 1));
+				setFlipped(false);
+			} else if (event.key === "ArrowLeft") {
+				event.preventDefault();
+				setIndex((n) => Math.max(0, n - 1));
+				setFlipped(false);
+			} else if (flipped && (event.key === "1" || event.key === "2" || event.key === "3")) {
+				event.preventDefault();
+				give(event.key === "1" ? "again" : event.key === "2" ? "hard" : "good");
+			}
+		}
+		window.addEventListener("keydown", onKey);
+		return () => window.removeEventListener("keydown", onKey);
+	});
+	(0, import_react.useEffect)(() => {
+		if (!armReset) return;
+		const timer = window.setTimeout(() => setArmReset(false), 4e3);
+		return () => window.clearTimeout(timer);
+	}, [armReset]);
+	const sessionCounts = {
+		again: Object.values(session).filter((g) => g === "again").length,
+		hard: Object.values(session).filter((g) => g === "hard").length,
+		good: Object.values(session).filter((g) => g === "good").length
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "mx-auto flex min-h-screen w-full max-w-5xl flex-col px-4 pb-16 pt-5 sm:px-6",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
+				className: "mb-6 flex flex-col gap-4",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex items-start justify-between gap-4",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-sm font-medium tracking-widest text-cinnabar",
+						children: "十八模型 · 策略闪卡"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+						className: "mt-1 text-4xl text-ink sm:text-5xl",
+						children: "博弈闪记"
+					})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "rounded-2xl border border-line bg-card px-4 py-3 text-right",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "text-xs text-muted",
+							children: "已掌握"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "font-serif text-2xl tabular-nums text-ink",
+							children: [ready ? mastered : "–", /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "text-base text-muted",
+								children: ["/", cards.length]
+							})]
+						})]
+					})]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", {
+					className: "grid grid-cols-3 gap-1 rounded-2xl border border-line bg-paper-deep p-1",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Tab, {
+							active: view === "map",
+							onClick: () => setView("map"),
+							icon: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Library, {
+								className: "size-4",
+								"aria-hidden": true
+							}),
+							label: "模型"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Tab, {
+							active: view === "study",
+							onClick: () => {
+								if (!queue.length) openDue();
+								else setView("study");
+							},
+							icon: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BookOpen, {
+								className: "size-4",
+								"aria-hidden": true
+							}),
+							label: "闪卡"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Tab, {
+							active: view === "quiz",
+							onClick: () => {
+								if (!quiz) startQuiz(cards, "随机十题");
+								else setView("quiz");
+							},
+							icon: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Brain, {
+								className: "size-4",
+								"aria-hidden": true
+							}),
+							label: "自测"
+						})
+					]
+				})]
+			}),
+			view === "map" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MapView, {
+				query,
+				setQuery,
+				stats,
+				familiar,
+				onOpenModel: (id) => {
+					const model = modelById(id);
+					openDeck(cardsIn(id).map((c) => c.id), model.title);
+				},
+				onOpenCard: (card) => {
+					const rest = shuffle(cardsIn(card.modelId).map((c) => c.id).filter((id) => id !== card.id));
+					setQueue([card.id, ...rest]);
+					setIndex(0);
+					setFlipped(false);
+					setPhase("run");
+					setSession({});
+					setDeckTitle(modelById(card.modelId).title);
+					setView("study");
+				},
+				onDue: openDue,
+				onLapses: openLapses,
+				onQuiz: () => startQuiz(cards, "随机十题"),
+				onReset: () => {
+					if (!armReset) {
+						setArmReset(true);
+						return;
+					}
+					reset();
+					setArmReset(false);
+				},
+				armReset
+			}) : null,
+			view === "study" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(StudyView, {
+				title: deckTitle,
+				queue,
+				index,
+				flipped,
+				phase,
+				current,
+				statsBox: current ? stats[current.id]?.box ?? 0 : 0,
+				sessionCounts,
+				onFlip: () => setFlipped((value) => !value),
+				onPrev: () => {
+					setIndex((n) => Math.max(0, n - 1));
+					setFlipped(false);
+				},
+				onNext: () => {
+					setIndex((n) => Math.min(queue.length - 1, n + 1));
+					setFlipped(false);
+				},
+				onGrade: give,
+				onBack: () => setView("map"),
+				onAgain: () => {
+					const missed = Object.entries(session).filter(([, g]) => g !== "good").map(([id]) => id);
+					openDeck(missed.length ? missed : queue, `${deckTitle} · 再看一遍`);
+				},
+				onShuffle: () => openDeck(queue, deckTitle)
+			}) : null,
+			view === "quiz" && quiz ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(QuizView, {
+				round: quiz,
+				setRound: setQuiz,
+				onBack: () => setView("map"),
+				onRetryWrong: () => {
+					const wrong = quiz.items.filter((item) => item.picked !== item.card.a).map((item) => item.card);
+					startQuiz(wrong.length ? wrong : quiz.items.map((item) => item.card), "错题再测");
+				},
+				onNew: () => startQuiz(cards, "随机十题"),
+				onAnswer: (id, correct) => grade(id, correct ? "good" : "again")
+			}) : null
+		]
+	});
+}
+function Tab({ active, onClick, icon, label }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+		type: "button",
+		onClick,
+		className: "flex h-11 items-center justify-center gap-2 rounded-xl text-sm font-medium " + (active ? "bg-ink text-paper" : "text-muted"),
+		children: [icon, label]
+	});
+}
+function MapView({ query, setQuery, stats, familiar, onOpenModel, onOpenCard, onDue, onLapses, onQuiz, onReset, armReset }) {
+	const needle = query.trim();
+	const hits = (0, import_react.useMemo)(() => {
+		if (!needle) return [];
+		return cards.filter((card) => {
+			return `${modelById(card.modelId).title}${card.kicker}${card.q}${card.a}${card.detail}`.includes(needle);
+		});
+	}, [needle]);
+	const lapseCount = cards.filter((c) => (stats[c.id]?.lapses ?? 0) > 0 && (stats[c.id]?.box ?? 0) < 3).length;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "flex flex-col gap-6",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+				className: "rounded-3xl border border-line bg-card p-5 sm:p-7",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "max-w-2xl text-base text-ink",
+						children: "把十八个博弈模型和开篇基础收成可以翻转的卡片。先看情境，自己答一句，再翻面核对策略。记得住就标记，含糊的留到下一轮。"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "mt-5 flex flex-col gap-2 sm:flex-row",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+								type: "button",
+								onClick: onDue,
+								className: "h-12 rounded-2xl bg-cinnabar px-5 text-sm font-medium text-cinnabar-ink",
+								children: "开始今日复习"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+								type: "button",
+								onClick: onQuiz,
+								className: "h-12 rounded-2xl border border-line bg-paper px-5 text-sm font-medium text-ink",
+								children: "随机自测十题"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+								type: "button",
+								onClick: onLapses,
+								disabled: lapseCount === 0,
+								className: "h-12 rounded-2xl border border-line bg-paper px-5 text-sm font-medium text-ink disabled:opacity-40",
+								children: ["错题 ", lapseCount]
+							})
+						]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: "mt-4 text-sm text-muted",
+						children: [
+							"熟悉及以上 ",
+							familiar,
+							" 张。进度只留在这台设备上。",
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+								type: "button",
+								onClick: onReset,
+								className: "ml-3 underline decoration-line underline-offset-4",
+								children: armReset ? "再点一次，确认清空" : "清空进度"
+							})
+						]
+					})
+				]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+				className: "flex h-12 items-center gap-3 rounded-2xl border border-line bg-card px-4",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Search, {
+					className: "size-4 text-muted",
+					"aria-hidden": true
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+					value: query,
+					onChange: (event) => setQuery(event.target.value),
+					placeholder: "搜索模型、故事或策略，例如 纳什、沉没成本",
+					className: "w-full bg-transparent text-sm text-ink outline-none placeholder:text-muted"
+				})]
+			}),
+			needle ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h2", {
+				className: "mb-3 text-xl",
+				children: [
+					"搜到 ",
+					hits.length,
+					" 张"
+				]
+			}), hits.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "rounded-2xl border border-line bg-card p-5 text-sm text-muted",
+				children: "没有匹配的卡片。试试模型名，或故事里的人。"
+			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
+				className: "flex flex-col gap-2",
+				children: hits.map((card) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+					type: "button",
+					onClick: () => onOpenCard(card),
+					className: "flex w-full flex-col gap-1 rounded-2xl border border-line bg-card px-4 py-3 text-left",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+						className: "text-xs text-cinnabar",
+						children: [
+							modelById(card.modelId).title,
+							" · ",
+							card.kicker
+						]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-sm text-ink",
+						children: card.q
+					})]
+				}) }, card.id))
+			})] }) : groups.map((group) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+				className: "mb-3 text-xl",
+				children: group
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
+				className: "grid grid-cols-1 gap-3 sm:grid-cols-2",
+				children: models.filter((model) => model.group === group).map((model) => {
+					const deck = cardsIn(model.id);
+					const done = deck.filter((c) => (stats[c.id]?.box ?? 0) >= 3).length;
+					const ratio = deck.length ? done / deck.length : 0;
+					return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+						type: "button",
+						onClick: () => onOpenModel(model.id),
+						className: "flex h-full w-full flex-col gap-3 rounded-3xl border border-line bg-card p-4 text-left",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex items-start justify-between gap-3",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "seal text-sm",
+									children: model.no
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+									className: "text-xs tabular-nums text-muted",
+									children: [
+										done,
+										"/",
+										deck.length,
+										" 掌握"
+									]
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+								className: "text-2xl",
+								children: model.title
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "mt-1 text-sm text-muted",
+								children: model.blurb
+							})] }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "progress-track",
+								"aria-hidden": true,
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									className: "progress-fill",
+									style: { width: `${ratio * 100}%` }
+								})
+							})
+						]
+					}) }, model.id);
+				})
+			})] }, group))
+		]
+	});
+}
+function StudyView({ title, queue, index, flipped, phase, current, statsBox, sessionCounts, onFlip, onPrev, onNext, onGrade, onBack, onAgain, onShuffle }) {
+	if (!queue.length || phase === "done") return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+		className: "rounded-3xl border border-line bg-card p-6 sm:p-8",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+				type: "button",
+				onClick: onBack,
+				className: "mb-6 text-sm text-muted",
+				children: "返回模型"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+				className: "text-3xl",
+				children: queue.length ? "这组看完了" : "这组还没有卡片"
+			}),
+			queue.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("ul", {
+				className: "mt-5 grid grid-cols-3 gap-2 text-center",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Count, {
+						label: "记住",
+						value: sessionCounts.good,
+						tone: "pine"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Count, {
+						label: "含糊",
+						value: sessionCounts.hard,
+						tone: "gold"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Count, {
+						label: "忘了",
+						value: sessionCounts.again,
+						tone: "cinnabar"
+					})
+				]
+			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "mt-3 text-sm text-muted",
+				children: "先在模型里选一组，或从今日复习开始。"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "mt-6 flex flex-col gap-2 sm:flex-row",
+				children: [
+					sessionCounts.again + sessionCounts.hard > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+						type: "button",
+						onClick: onAgain,
+						className: "h-12 rounded-2xl bg-cinnabar px-5 text-sm font-medium text-cinnabar-ink",
+						children: "再看没记住的"
+					}) : null,
+					queue.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+						type: "button",
+						onClick: onShuffle,
+						className: "h-12 rounded-2xl border border-line px-5 text-sm font-medium text-ink",
+						children: "再洗一次"
+					}) : null,
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+						type: "button",
+						onClick: onBack,
+						className: "h-12 rounded-2xl border border-line px-5 text-sm font-medium text-ink",
+						children: "回到模型"
+					})
+				]
+			})
+		]
+	});
+	if (!current) return null;
+	const model = modelById(current.modelId);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+		className: "flex flex-col gap-4",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex items-center justify-between gap-3",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+						type: "button",
+						onClick: onBack,
+						className: "text-sm text-muted",
+						children: "返回"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "truncate text-sm text-ink",
+						children: title
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: "shrink-0 text-sm tabular-nums text-muted",
+						children: [
+							index + 1,
+							"/",
+							queue.length
+						]
+					})
+				]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "progress-track",
+				"aria-hidden": true,
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "progress-fill",
+					style: { width: `${(index + (flipped ? .5 : 0)) / queue.length * 100}%` }
+				})
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "deck-scene",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: flipped ? "deck-inner is-flipped" : "deck-inner",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+						className: "deck-face flex flex-col gap-5 rounded-3xl border border-line bg-card p-5 sm:p-7",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex items-center justify-between",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+									className: "text-xs tracking-wide text-cinnabar",
+									children: [
+										model.title,
+										" · ",
+										current.kicker
+									]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "text-xs text-muted",
+									children: boxLabel[statsBox]
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+								className: "text-2xl leading-snug sm:text-3xl",
+								children: current.q
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "mt-auto text-sm text-muted",
+								children: "先在心里答一句，再翻转核对。"
+							})
+						]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+						className: "deck-face deck-back flex flex-col gap-4 rounded-3xl border border-pine bg-pine-soft p-5 sm:p-7",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "text-xs tracking-wide text-pine",
+								children: current.kicker
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+								className: "text-2xl leading-snug text-ink",
+								children: current.a
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-sm leading-relaxed text-ink",
+								children: current.detail
+							})
+						]
+					})]
+				})
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "grid grid-cols-3 gap-2",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+						type: "button",
+						onClick: onPrev,
+						disabled: index === 0,
+						className: "flex h-12 items-center justify-center gap-1 rounded-2xl border border-line bg-card text-sm disabled:opacity-40",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, {
+							className: "size-4",
+							"aria-hidden": true
+						}), "上一张"]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+						type: "button",
+						onClick: onFlip,
+						className: "h-12 rounded-2xl bg-ink text-sm font-medium text-paper",
+						children: flipped ? "翻回题目" : "翻转答案"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+						type: "button",
+						onClick: onNext,
+						disabled: index === queue.length - 1,
+						className: "flex h-12 items-center justify-center gap-1 rounded-2xl border border-line bg-card text-sm disabled:opacity-40",
+						children: ["下一张", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, {
+							className: "size-4",
+							"aria-hidden": true
+						})]
+					})
+				]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: flipped ? "grid grid-cols-3 gap-2" : "grid grid-cols-3 gap-2 opacity-40",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+						type: "button",
+						disabled: !flipped,
+						onClick: () => onGrade("again"),
+						className: "h-12 rounded-2xl bg-cinnabar text-sm font-medium text-cinnabar-ink disabled:cursor-not-allowed",
+						children: "忘了"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+						type: "button",
+						disabled: !flipped,
+						onClick: () => onGrade("hard"),
+						className: "h-12 rounded-2xl border border-line bg-card text-sm font-medium text-ink disabled:cursor-not-allowed",
+						children: "含糊"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+						type: "button",
+						disabled: !flipped,
+						onClick: () => onGrade("good"),
+						className: "h-12 rounded-2xl bg-pine text-sm font-medium text-pine-ink disabled:cursor-not-allowed",
+						children: "记住"
+					})
+				]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "text-center text-xs text-muted",
+				children: "空格翻转 · 左右方向键换卡 · 翻开后按 1 / 2 / 3 评分"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+				type: "button",
+				onClick: onShuffle,
+				className: "mx-auto flex items-center gap-2 text-sm text-muted",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Shuffle, {
+					className: "size-4",
+					"aria-hidden": true
+				}), "重洗这组"]
+			})
+		]
+	});
+}
+function Count({ label, value, tone }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
+		className: "rounded-2xl border border-line bg-paper px-2 py-3",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: `font-serif text-3xl tabular-nums ${tone === "pine" ? "text-pine" : tone === "gold" ? "text-gold" : "text-cinnabar"}`,
+			children: value
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "text-xs text-muted",
+			children: label
+		})]
+	});
+}
+function QuizView({ round, setRound, onBack, onRetryWrong, onNew, onAnswer }) {
+	const item = round.items[round.cursor];
+	const correctCount = round.items.filter((entry) => entry.picked === entry.card.a).length;
+	const answered = round.items.filter((entry) => entry.picked).length;
+	if (round.done || !item) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+		className: "rounded-3xl border border-line bg-card p-6 sm:p-8",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+				type: "button",
+				onClick: onBack,
+				className: "mb-6 text-sm text-muted",
+				children: "返回模型"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+				className: "text-3xl",
+				children: "这轮自测结束"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+				className: "mt-3 font-serif text-5xl tabular-nums text-ink",
+				children: [correctCount, /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+					className: "text-2xl text-muted",
+					children: ["/", round.items.length]
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+				className: "mt-2 text-sm text-muted",
+				children: [round.title, "。错题可以立刻再测一遍。"]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "mt-6 flex flex-col gap-2 sm:flex-row",
+				children: [correctCount < round.items.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+					type: "button",
+					onClick: onRetryWrong,
+					className: "h-12 rounded-2xl bg-cinnabar px-5 text-sm font-medium text-cinnabar-ink",
+					children: "只测错题"
+				}) : null, /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+					type: "button",
+					onClick: onNew,
+					className: "h-12 rounded-2xl border border-line px-5 text-sm font-medium text-ink",
+					children: "再来十题"
+				})]
+			})
+		]
+	});
+	const revealed = item.picked !== null;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+		className: "flex flex-col gap-4",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex items-center justify-between",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+						type: "button",
+						onClick: onBack,
+						className: "text-sm text-muted",
+						children: "返回"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-sm text-ink",
+						children: round.title
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: "text-sm tabular-nums text-muted",
+						children: [
+							round.cursor + 1,
+							"/",
+							round.items.length
+						]
+					})
+				]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+				className: "rounded-3xl border border-line bg-card p-5 sm:p-7",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+					className: "text-xs text-cinnabar",
+					children: [
+						modelById(item.card.modelId).title,
+						" · ",
+						item.card.kicker
+					]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+					className: "mt-3 text-2xl leading-snug",
+					children: item.card.q
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
+				className: "flex flex-col gap-2",
+				children: item.choices.map((choice, choiceIndex) => {
+					const letter = "甲乙丙丁"[choiceIndex] ?? "";
+					const isCorrect = choice === item.card.a;
+					const isPicked = choice === item.picked;
+					let tone = "border-line bg-card text-ink";
+					if (revealed && isCorrect) tone = "border-pine bg-pine-soft text-ink";
+					else if (revealed && isPicked && !isCorrect) tone = "border-cinnabar bg-cinnabar-soft text-ink";
+					return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+						type: "button",
+						disabled: revealed,
+						onClick: () => {
+							const items = round.items.map((entry, entryIndex) => entryIndex === round.cursor ? {
+								...entry,
+								picked: choice
+							} : entry);
+							setRound({
+								...round,
+								items
+							});
+							onAnswer(item.card.id, choice === item.card.a);
+						},
+						className: `flex w-full items-start gap-3 rounded-2xl border px-4 py-3 text-left text-sm disabled:cursor-default ${tone}`,
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "mt-0.5 font-serif text-base text-cinnabar",
+								children: letter
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "flex-1 leading-relaxed",
+								children: choice
+							}),
+							revealed && isCorrect ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, {
+								className: "mt-0.5 size-4 shrink-0 text-pine",
+								"aria-hidden": true
+							}) : null,
+							revealed && isPicked && !isCorrect ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(X, {
+								className: "mt-0.5 size-4 shrink-0 text-cinnabar",
+								"aria-hidden": true
+							}) : null
+						]
+					}) }, choice);
+				})
+			}),
+			revealed ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "rounded-3xl border border-line bg-paper-deep p-5",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "text-sm leading-relaxed text-ink",
+					children: item.card.detail
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+					type: "button",
+					onClick: () => {
+						if (round.cursor + 1 >= round.items.length) setRound({
+							...round,
+							done: true
+						});
+						else setRound({
+							...round,
+							cursor: round.cursor + 1
+						});
+					},
+					className: "mt-4 flex h-12 w-full items-center justify-center gap-2 rounded-2xl bg-ink text-sm font-medium text-paper sm:w-auto sm:px-6",
+					children: [round.cursor + 1 >= round.items.length ? "看结果" : "下一题", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, {
+						className: "size-4",
+						"aria-hidden": true
+					})]
+				})]
+			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+				className: "text-center text-xs text-muted",
+				children: [
+					"已答对 ",
+					correctCount,
+					" · 已作答 ",
+					answered
+				]
+			})
+		]
+	});
+}
+function Home() {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Studio, {});
+}
+//#endregion
+export { Home as component };

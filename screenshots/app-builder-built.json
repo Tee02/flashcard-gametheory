@@ -1,0 +1,38 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "博弈闪记",
+      "hasCanvas": false,
+      "bodyTextLen": 677,
+      "bodyTextHash": "3660315d8bdb3e72ec038ebd4f431c8de46d17dd9edc638b9adf121d35b447ce",
+      "bodyTextPrefix": "十八模型 · 策略闪卡 博弈闪记 已掌握 0/71 模型 闪卡 自测 把十八个博弈模型和开篇基础收成可以翻转的卡片。先看情境，自",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "博弈闪记",
+      "hasCanvas": false,
+      "bodyTextLen": 677,
+      "bodyTextHash": "3660315d8bdb3e72ec038ebd4f431c8de46d17dd9edc638b9adf121d35b447ce",
+      "bodyTextPrefix": "十八模型 · 策略闪卡 博弈闪记 已掌握 0/71 模型 闪卡 自测 把十八个博弈模型和开篇基础收成可以翻转的卡片。先看情境，自",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-built.json",
+  "divergesFromBaseline": false,
+  "baselineReasons": []
+}
